@@ -1,0 +1,78 @@
+Public Class Form16
+    Public cumm, jumlah, min, max, max1, inputawal, inputakhir, nilaimax, min1, nilaimin As Integer
+    Public midrange, midrange1 As Double
+    Public b(3) As Integer
+    Public pesan, pesan1 As String
+    Private Sub Form16_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cumm = 0
+        pesan = ""
+        jumlah = 0
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) 
+
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim test, coba As Integer
+        test = 0
+        coba = 10
+        If cumm < 4 Then
+            'b(cumm) = CInt(TextBox1.Text)
+
+            'If b(cumm) > 5 Then
+            'jumlah = jumlah + b(cumm)
+            'Label1.Text = jumlah
+            'cumm = cumm + 1
+            'Else
+            '   Label1.Text = "Maaf, data harus diinput dengan nilai > 5"
+            'End If
+            If cumm = 0 Then
+                b(cumm) = CInt(TextBox1.Text)
+                min = b(cumm)
+                max = b(cumm)
+                inputawal = b(cumm)
+                Label1.Text = "Nilai Awal:" + min.ToString
+                Label2.Text = "Nilai Awal:" + max.ToString
+            Else
+                b(cumm) = CInt(TextBox1.Text)
+                min1 = b(cumm)
+                max1 = b(cumm)
+                nilaimin = Math.Min(min, min1)
+                nilaimax = Math.Max(max, max1)
+                min = nilaimin
+                max = nilaimax
+                Label1.Text = "Nilai Minimum:" + min.ToString
+                Label2.Text = "Nilai Maximum:" + max.ToString
+                If cumm = 3 Then
+                    inputakhir = b(cumm)
+                    midrange = 0.5 * (min + max)
+                    midrange1 = 0.5 * (inputawal + inputakhir)
+                    Label3.Text = "V.1 -> Nilai Mid Range: " + midrange.ToString
+                    Label4.Text = "V.2 -> Nilai Mid Range: " + midrange1.ToString
+                End If
+            End If
+            cumm = cumm + 1
+
+        Else
+            Label1.Text = "Maaf, hanya bisa 4 data saja"
+            Button2.Enabled = False
+            While test < 3
+                pesan = pesan + ", " + b(test).ToString
+                test = test + 1
+            End While
+            Label2.Text = pesan
+        End If
+
+
+    End Sub
+
+    Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox1.KeyPress
+
+    End Sub
+End Class
